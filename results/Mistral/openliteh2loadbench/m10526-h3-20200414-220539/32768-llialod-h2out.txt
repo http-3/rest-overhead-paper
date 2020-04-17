@@ -1,0 +1,40 @@
+--------------------------------------------------------------------------------
+CPU name:	Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz
+CPU type:	Intel Xeon Haswell EN/EP/EX processor
+CPU clock:	2.49 GHz
+--------------------------------------------------------------------------------
+starting benchmark...
+spawning thread #0: 1 total client(s). Timing-based test with 0s of warm-up time and 60s of main duration for measurements.
+Warm-up started for thread #0.
+progress: 100% of clients started
+Warm-up phase is over for thread #0.
+Main benchmark duration is started for thread #0.
+TLS Protocol: TLSv1.3
+Cipher: TLS_AES_128_GCM_SHA256
+Server Temp Key: X25519 253 bits
+Application protocol: h3-25
+Main benchmark duration is over for thread #0. Stopping all clients.
+Stopped all clients for thread #0
+
+finished in 60.00s, 9.42 req/s, 301.89KB/s
+requests: 565 total, 566 started, 565 done, 565 succeeded, 0 failed, 0 errored, 0 timeout
+status codes: 565 2xx, 0 3xx, 0 4xx, 0 5xx
+traffic: 17.69MB (18548238) total, 8.75KB (8961) headers (space savings 96.14%), 17.67MB (18529740) data
+                     min         max         mean         sd        +/- sd
+time for request:     1.18ms    303.44ms    105.80ms     25.36ms    95.40%
+time for connect:   123.45ms    123.45ms    123.45ms         0us   100.00%
+time to 1st byte:   226.22ms    226.22ms    226.22ms         0us   100.00%
+req/s           :       9.42        9.42        9.42        0.00   100.00%
+--------------------------------------------------------------------------------
+Group 1: Custom
++---------------------------+-------------+--------------+
+|           Event           |   Counter   |    Core 0    |
++---------------------------+-------------+--------------+
+|    Runtime (RDTSC) [s]    |     TSC     | 6.002783e+01 |
+|      L2_LINES_IN_ALL      | PMC0:KERNEL |     16913632 |
+| L2_LINES_OUT_DEMAND_DIRTY | PMC1:KERNEL |       867356 |
+|     INSTR_RETIRED_ANY     |    FIXC0    |    805868880 |
+|   CPU_CLK_UNHALTED_CORE   |    FIXC1    |    500966441 |
+|    CPU_CLK_UNHALTED_REF   |    FIXC2    |   1011939225 |
++---------------------------+-------------+--------------+
+

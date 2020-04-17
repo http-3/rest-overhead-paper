@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+CPU name:	Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz
+CPU type:	Intel Xeon Haswell EN/EP/EX processor
+CPU clock:	2.49 GHz
+--------------------------------------------------------------------------------
+Running 1m test @ http://10.50.39.92:3000/8.txt
+  1 threads and 1 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    81.34us   47.48us   4.25ms   99.07%
+    Req/Sec     7.11k   803.90    17.40k    97.84%
+  Latency Distribution
+     50%   80.00us
+     75%   81.00us
+     90%   86.00us
+     99%  123.00us
+  425321 requests in 1.00m, 97.75MB read
+Requests/sec:   7076.98
+Transfer/sec:      1.63MB
+--------------------------------------------------------------------------------
+Group 1: Custom
++---------------------------+-------------+--------------+
+|           Event           |   Counter   |    Core 0    |
++---------------------------+-------------+--------------+
+|    Runtime (RDTSC) [s]    |     TSC     | 6.010191e+01 |
+|      L2_LINES_IN_ALL      | PMC0:KERNEL |    848340035 |
+| L2_LINES_OUT_DEMAND_DIRTY | PMC1:KERNEL |     68183208 |
+|     INSTR_RETIRED_ANY     |    FIXC0    |   3411347141 |
+|   CPU_CLK_UNHALTED_CORE   |    FIXC1    |   4319402157 |
+|    CPU_CLK_UNHALTED_REF   |    FIXC2    |   8814034625 |
++---------------------------+-------------+--------------+
+
