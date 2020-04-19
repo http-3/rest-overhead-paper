@@ -4,8 +4,6 @@ SERVER=$(hostname)
 CLIENT=$1
 SSH=/usr/bin/ssh
 TOOLSDIR=$HOME/tools
-THREADS=1
-OPEN_CON=10
 WRK=$HOME/tools/wrk/wrk
 DATUM=$(date +'%Y%m%d-%H%M%S')
 WWWROOT=/dev/shm
@@ -18,23 +16,22 @@ module load likwid
 for THREADS in 1 24; do
 	for OPEN_CON in 1 10 240; do
 	if ((THREADS > OPEN_CON));then continue;fi
-	RESULT_DIR=$HOME/tests/Scripts/likbenchsswrkresults/$SERVER-$THREADS-$OPEN_CON-$DATUM
+	RESULT_DIR=$HOME/tests/Scripts/likbenchsswrkresults-$SERVER-$THREADS-$OPEN_CON-$DATUM
 	echo "creating DIR $RESULT_DIR"
 	mkdir -p $RESULT_DIR
 	LCORE=$(( THREADS -1 ))
-	     for (( i=0; i<=22;i++ ));do
-				file=$((2**$i))	
+		  for file in 1 100 1000 100000 1000000 100000000;do
 				echo "creating file $file"
 				dd if=/dev/urandom bs=1 count=$file of=$WWWROOT/$file.txt
 				sleep 1
 				likwid-perfctr -f -g $group -C 0-$LCORE $TOOLSDIR/sbin/lighttpd -D -f $TOOLSDIR/lighttpdshm.conf 1> $RESULT_DIR/$file-$groupID-likwid.txt 2>&1 &
 				sleep 1
 				echo "light on"
-${SSH} -T $CLIENT <<EOF
+${SSH} -T $CLIENT <<EOSSH
 module load pcre
 module load likwid
 likwid-perfctr -f -g $group -C 0-$LCORE ${WRK} -t$THREADS -c$OPEN_CON -d60s --latency http://$SERVER:3000/$file.txt | tee $RESULT_DIR/$file-$groupID-wrkout.txt
-EOF
+EOSSH
 				
 				echo "wrk done"
 				echo "killing lighttpd on $SERVER"

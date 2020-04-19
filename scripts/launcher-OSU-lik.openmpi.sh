@@ -18,8 +18,7 @@ ulimit -c 0
 # Environment settings to run a MPI parallel program
 # compiled with OpenMPI and Mellanox HPC-X toolkit
 # Load environment
-#module load intel/version_you_used
-#module load openmpi/2.0.2p1_hpcx-intel14
+
 # Settings for OpenMPI and MXM (MellanoX Messaging)
 # library
 # export OMPI_MCA_pml=cm
@@ -40,7 +39,6 @@ export OMPI_MCA_coll=^ghc
 ##verbose logging 
 
 #export OMPI_MCA_btl_base_verbose=100
-###FG Erweiterung
 ### General SLURM Parameters
 echo "SLURM_JOBID  = ${SLURM_JOBID}"
 echo "SLURM_JOB_NODELIST = ${SLURM_JOB_NODELIST}"
@@ -62,12 +60,6 @@ module purge
 module load openmpi
 module load likwid
 
-# Use srun (not mpirun or mpiexec) command to launch
-# programs compiled with any MPI library
-#####srun -l --propagate=STACK,CORE --cpu_bind=cores --distribution=block:cyclic ${TASK}
-###%h for hostname, %p for process ID, and %r for MPI rank.
-##MPI_CMD="likwid-mpirun -nperdomain S:1 -g MEM"
- 
 
 [ -n "${SLURM_JOBID}" ] && JOBDIR="job-${SLURM_JOBID}" || JOBDIR="$(date +%Hh%Mm%S)"
 DATADIR="${RUNDIR}/$(date +%Y-%m-%d)/${JOBDIR}"
@@ -109,6 +101,6 @@ EOF
     sleep $DELAY
 done
 done
-echo "FERTIG"
+echo "DONE"
 
 

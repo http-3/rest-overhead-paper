@@ -2,14 +2,11 @@
 
 SERVER=$(hostname)
 PORT=8443
-CLIENT=$2
+CLIENT=$1
 SSH=/usr/bin/ssh
 TOOLSDIR=$HOME/tools
 LSWSCTRL=$HOME/tools/lsws/bin/lswsctrl
-# THREADS=1
-# OPEN_CON=10
 h2load=$HOME/tools/h2load-27/nghttp2/build/bin/h2load
-# REQPS=1000
 DATUM=$(date +'%Y%m%d-%H%M%S')
 WWWROOT=$HOME/tools/lsws/Example/html/shm
 group=L2_RQSTS_MISS:PMC0:KERNEL,L2_LINES_OUT_DIRTY_ANY:PMC1:KERNEL
@@ -44,5 +41,5 @@ EOF
 				sleep 5
 		  done
 done
-echo "FERTIG"
+echo "DONE"
 	

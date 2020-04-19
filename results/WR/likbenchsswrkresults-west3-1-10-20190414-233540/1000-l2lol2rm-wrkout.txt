@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+CPU name:	Intel(R) Xeon(R) CPU           X5650  @ 2.67GHz
+CPU type:	Intel Core Westmere processor
+CPU clock:	2.67 GHz
+--------------------------------------------------------------------------------
+Running 1m test @ http://west3:3000/1000.txt
+  1 threads and 10 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.86ms    2.88ms  12.90ms   83.74%
+    Req/Sec     4.24k     7.21k   19.84k    81.44%
+  Latency Distribution
+     50%  313.00us
+     75%    2.65ms
+     90%    6.51ms
+     99%   11.41ms
+  246692 requests in 1.00m, 290.79MB read
+Requests/sec:   4106.17
+Transfer/sec:      4.84MB
+--------------------------------------------------------------------------------
+Group 1: Custom
++------------------------+-------------+--------------+
+|          Event         |   Counter   |    Core 6    |
++------------------------+-------------+--------------+
+|   Runtime (RDTSC) [s]  |     TSC     | 6.008528e+01 |
+| L2_LINES_OUT_DIRTY_ANY | PMC0:KERNEL |    271508079 |
+|      L2_RQSTS_MISS     | PMC1:KERNEL |   3775864795 |
+|    INSTR_RETIRED_ANY   |    FIXC0    |   1674104766 |
+|  CPU_CLK_UNHALTED_CORE |    FIXC1    |   2607866272 |
+|  CPU_CLK_UNHALTED_REF  |    FIXC2    |   2909458000 |
++------------------------+-------------+--------------+
+

@@ -6,7 +6,7 @@
 #SBATCH -c 1
 #SBATCH --partition=west
 #SBATCH --time=00:10:00
-#SBATCH --job-name=OSU99
+#SBATCH --job-name=LIKBENCH99
 #SBATCH --account=$USER
 
 
@@ -17,5 +17,4 @@ echo $NODES
 set -- $NODES
 SERVER=$1
 CLIENT=$2
-## ssh $SERVER 'bash -s' < $HOME/tests/Scripts/likbenchosu.sh $CLIENT
-$PWD/likbenchosu.sh $CLIENT
+$PWD/likbench.sh $CLIENT
